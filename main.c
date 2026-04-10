@@ -58,6 +58,21 @@ int main(int argc, char *argv[]){
     }
     fclose(f);
 
+    //Modeliavimo paruosimas
+    PQueue *queue = create_pq();
+    int *workers = calloc(p.K, sizeof(int));
+    BigInt *profit = bigint_from_str("0");  
+
+    for(int i=0; i < p.model_time; i++){
+       int r = rand() % 100;
+       int TR_random = (rand() % p.TR) + 1;
+       if(r < p.T1){
+            push_pq(queue,TR_random,0);
+       } else if(r <= p.T1 + p.T2){
+            push_pq(queue,TR_random,1);
+       }
+    }
+
     //Ar teisingai perskaite
     printf("Model time: %ld\n", p.model_time);
     printf("Workers: %d\n", p.K);
