@@ -4,24 +4,32 @@
 #include "BigInt.h"
 #include "pqueue.h"
 
+typedef struct{
+    long model_time; //kiek laiko trunka simuliacija
+    int K; //darbuotoju skaicius
+    int T1; //vip kliento tikimybe
+    int T2; //paprasto kliento tikimybe
+    int TR; //maksimalus automobilio taisymo laikas
+    int A; //francize uz kuria servisas gauna papildomu pajamu
+    int A1; //suma, atitenkanti servisui
+    int U; //darbuotojo atlyginimas
+}Params;
+
 int main(){
-    printf("Trying to connect files...\n");
+    char file_name[50] = "data.txt";
+    Params p;
 
-    //Tikrinamas BigInt
-    BigInt *number = bigint_from_str("100");
-    char *text = bigint_to_str(number);
-    printf("BigInt working, the number is: %s\n", text);
+    FILE *f = fopen(file_name, "r");
+    if(f==NULL){
+        printf("Error! Cannot open file %s\n",file_name);
+    }
+    if(fscanf(f, "%ld %d %d %d %d %d %d %d", &p.model_time, &p.K, &p.T1, &p.T2, &p.TR, &p.A, &p.A1, &p.U) != 8){
+        printf("Error! Parameters missing or entered in incorrect format\n");
+    }
+    fclose(f);
 
-    //Tikrinamas PQueue
-    PQueue *queue = create_pq();
-    push_pq(queue, 50, 1);
-    printf("Priority Queue is working, number of elements: %d\n", count_pq(queue));
-
-    //Isvaloma atmintis
-    free(text);
-    bigint_free(number);
-    destruct_pq(&queue);
-
-    printf("All good\n");
+    //Ar teisingai perskaite
+    printf("Model time: %ld\n", p.model_time);
+    printf("Workers: %d\n", p.K);
     return 0;
 }
