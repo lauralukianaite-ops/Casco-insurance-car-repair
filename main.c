@@ -11,8 +11,7 @@ typedef struct{
     int K; //darbuotoju skaicius
     int T1; //vip kliento tikimybe
     int T2; //paprasto kliento tikimybe
-    int TR; //maksimalus automobilio taisymo laikas
-    int A; //francize uz kuria servisas gauna papildomu pajamu
+    int A; //francize
     int A1; //suma, atitenkanti servisui
     int U; //darbuotojo atlyginimas
 }Params;
@@ -53,13 +52,10 @@ int main(int argc, char *argv[]){
         printf("Error! Cannot open file %s\n",file_name);
         return 1;
     }
-    if(fscanf(f, "%ld %d %d %d %d %d %d %d", &p.model_time, &p.K, &p.T1, &p.T2, &p.TR, &p.A, &p.A1, &p.U) != 8){
+    if(fscanf(f, "%ld %d %d %d %d %d %d", &p.model_time, &p.K, &p.T1, &p.T2, &p.A, &p.A1, &p.U) != 7){
         printf("Error! Parameters missing or entered in incorrect format\n");
         return 1;
     }
-    printf("model_time=%ld K=%d T1=%d T2=%d TR=%d A=%d A1=%d U=%d\n",
-    p.model_time, p.K, p.T1, p.T2, p.TR, p.A, p.A1, p.U);
-    fclose(f);
 
     //Modeliavimo paruosimas
     PQueue *queue = create_pq();
@@ -92,14 +88,8 @@ int main(int argc, char *argv[]){
             }
         }
 
-        if(i < 5){
-        char *s = bigint_to_str(profit);
-        printf("Valanda %d: profit = %s\n", i, s);
-        free(s);
-    }
-
         int r = rand() % 100;
-        int TR_random = (rand() % p.TR) + 1;
+        int TR_random = (rand() % p.K*5) + 1;
 
         if(r < p.T1){
             total_vip++;
