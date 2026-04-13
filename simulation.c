@@ -6,7 +6,7 @@
 
 #define WORK_HOURS 8
 
-void simulate(Params p){
+void simulate(SimulationParams p){
     //Modeliavimo paruosimas
     PQueue *queue = create_pq();
     int *workers = calloc(p.K, sizeof(int));

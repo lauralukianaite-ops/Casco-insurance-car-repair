@@ -9,8 +9,9 @@ typedef struct{
     int A;
     int A1;
     int U;
-} Params;
+} SimulationParams;
 
-void simulate(Params p);
+void simulate(SimulationParams p);
+void readParamsFromFile(const char* filename, SimulationParams* params);
 
 #endif

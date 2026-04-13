@@ -4,6 +4,27 @@
 #include <time.h>
 #include "simulation.h"
 
+void readParamsFromFile(const char* filename, SimulationParams* params) {
+    FILE* file = fopen(filename, "r");
+    if (file == NULL) {
+        printf("Error! Cannot open file %s\n", filename);
+        exit(1); 
+    }
+
+    int* fields[] = {
+        (int*)&params->model_time, &params->K, &params->T1, &params->T2, &params->A, &params->A1, &params->U
+    };
+
+    char line[256];
+    for (int i = 0; i < 7; ++i) {
+        if (fgets(line, sizeof(line), file)) {
+            sscanf(line, "%d", fields[i]);
+        }
+    }
+
+    fclose(file);
+}
+
 int main(int argc, char *argv[]){
     char file_name[256] = "";
     int seed = -1;
@@ -34,16 +55,9 @@ int main(int argc, char *argv[]){
     srand(seed);
     printf("Initialising seed: %d\n",seed);
 
-    Params p;
-    FILE *f = fopen(file_name, "r");
-    if(f==NULL){
-        printf("Error! Cannot open file %s\n",file_name);
-        return 1;
-    }
-    if(fscanf(f, "%ld%*[^\n] %d%*[^\n] %d%*[^\n] %d%*[^\n] %d%*[^\n] %d%*[^\n] %d%*[^\n]", &p.model_time, &p.K, &p.T1, &p.T2, &p.A, &p.A1, &p.U) != 7){
-        printf("Error! Parameters missing or entered in incorrect format\n");
-        return 1;
-    }
+    SimulationParams p;
+    readParamsFromFile(file_name, &p);
+    
     simulate(p);
     return 0;
 }

@@ -11,7 +11,7 @@ Darbe panaudoti du abstraktūs duomenų tipai:
 
 ## Bendravimas ir bendradarbiavimas
 
-
+Bendradarbiauta su Vladimir Sarnovskij, aptarti užduoties reikalavimai, pasidalinta failais bei pasinaudota kolegos parametrų skaitymo funkcija `readParamsFromFile`.
 
 ## Algoritmo aprašymas
 
@@ -43,7 +43,7 @@ simulation.exe
 
 Rezultatai išsaugomi į `result1.txt` ir `result2.txt` paleidus `Go.cmd`.
 
-## Pastabos
+## Pastejimai
 
 - `BigInt` naudojamas pelno skaičiavimui, kad būtų išvengta sveikųjų skaičių perpildymo.
 - **Darbuotojų skaičiaus įtaka:** Pastebėta, kad esant mažam darbuotojų skaičiui (K), VIP klientų viršvalandžiai mažina pelną, nes jų aptarnavimo laikas (iki 5*K valandų) dažnai viršija standartinę 8 valandų darbo dieną.
