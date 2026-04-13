@@ -40,7 +40,7 @@ int main(int argc, char *argv[]){
         printf("Error! Cannot open file %s\n",file_name);
         return 1;
     }
-    if(fscanf(f, "%ld %d %d %d %d %d %d", &p.model_time, &p.K, &p.T1, &p.T2, &p.A, &p.A1, &p.U) != 7){
+    if(fscanf(f, "%ld%*[^\n] %d%*[^\n] %d%*[^\n] %d%*[^\n] %d%*[^\n] %d%*[^\n] %d%*[^\n]", &p.model_time, &p.K, &p.T1, &p.T2, &p.A, &p.A1, &p.U) != 7){
         printf("Error! Parameters missing or entered in incorrect format\n");
         return 1;
     }
