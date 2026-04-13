@@ -1,5 +1,7 @@
 # Kasko draudimo / autoserviso simuliacija (3-as laboratorinis)
 
+Simuliuojamas autoservisas su dviejų tipų klientais: VIP (frančizė A, servisas gauna A1 priedo) ir paprastais (frančizė B = A - A1). VIP klientai aptarnaujami pirmiausiai, prireikus dirbami viršvalandžiai (mokant darbuotojams dvigubai). Modeliuojama kuri strategija servisui naudingesnė — turėti bendradarbiavimo sutartis ar dirbti be jų.
+
 ## Panaudoti ADT
 
 Darbe panaudoti du abstraktūs duomenų tipai:
@@ -7,15 +9,9 @@ Darbe panaudoti du abstraktūs duomenų tipai:
 - **Prioritetinė eilė** (`pqueue`) - paimta iš dėstytojo puslapio (1dogr2191). Rasta defektų: 0;
 - **Ilgas sveikasis skaičius** (`BigInt`) — paimta iš dėstytojo puslapio (1aima2290). Rasta defektų: 0.
 
-## Varianto sąlyga
-
-Simuliuojamas autoservisas su dviejų tipų klientais: VIP (frančizė A, servisas gauna A1 priedo) ir paprastais (frančizė B = A - A1). VIP klientai aptarnaujami pirmiausiai, prireikus dirbami viršvalandžiai (mokant darbuotojams dvigubai). Modeliuojama kuri strategija servisui naudingesnė — turėti bendradarbiavimo sutartis ar dirbti be jų.
-
 ## Bendravimas ir bendradarbiavimas
 
-Buvo aptariami užduoties reikalavimai
 
-## Algoritmo aprašymas
 
 ## Algoritmo aprašymas
 
